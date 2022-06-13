@@ -1,0 +1,23 @@
+server.port: 8090
+spring:
+  application:
+    name: quoter
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://DESKTOP-1FLIC7Q:1433;instanceName=SQLEXPRESS02;databaseName=master;user=SQLS;password=admin;
+    username: SQLS
+    password: admin
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect:
+          org:
+            hibernate:
+              dialect: org.hibernate.dialect.SQLServer2008Dialect
+    hibernate:
+      ddl-auto: update
+config:
+  const1: 1.66
+  const2: 0.5
