@@ -1,23 +1,23 @@
-server.port: 8090
+server:
+  port: 8090
+
 spring:
   application:
-    name: quoter
+    name: Autex_M1
   datasource:
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://DESKTOP-1FLIC7Q:1433;instanceName=SQLEXPRESS02;databaseName=master;user=SQLS;password=admin;
-    username: SQLS
-    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/Autex_Dev?useSSL=false&serverTimezone=UTC
+    username: root
+    password:
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
-        dialect:
-          org:
-            hibernate:
-              dialect: org.hibernate.dialect.SQLServer2008Dialect
-    hibernate:
-      ddl-auto: update
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
 config:
   const1: 1.66
   const2: 0.5
