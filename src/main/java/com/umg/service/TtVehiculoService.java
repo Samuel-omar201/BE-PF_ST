@@ -1,0 +1,14 @@
+package com.umg.service;
+
+import com.umg.data.bo.TtVehiculo;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface TtVehiculoService {
+
+    List<TtVehiculo> findAll();
+    Optional<TtVehiculo> findById(Integer id);
+    TtVehiculo update(TtVehiculo ttVehiculo);
+    TtVehiculo deleteById(Integer id);
+}
