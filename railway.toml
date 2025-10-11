@@ -1,5 +1,5 @@
 [build]
-builder = "paketobuildpacks/builder:base"
+builder = "NIXPACKS"
 buildCommand = "mvn clean package -DskipTests"
 
 [deploy]
