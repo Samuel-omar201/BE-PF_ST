@@ -6,17 +6,17 @@ spring:
     name: Autex_M1
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/Autex_Dev?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://mainline.proxy.rlwy.net:39835/railway?useSSL=false&serverTimezone=UTC
     username: root
-    password:
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    properties:
+    password: pRiLclPwGNaQdwqCuAbnGlcWczXKsEDV
+
+    jpa:
       hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL8Dialect
+      show-sql: true
 
 config:
   const1: 1.66
