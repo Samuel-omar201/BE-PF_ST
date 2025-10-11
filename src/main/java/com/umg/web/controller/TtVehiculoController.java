@@ -11,9 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/service/Autex_M1/ttVehiculo")
+@CrossOrigin(origins = "http://localhost:3000")
 @Api(value = "Manejo de vehículos", protocols = "http")
 public class TtVehiculoController {
 
@@ -28,6 +30,14 @@ public class TtVehiculoController {
     ResponseEntity<List<TtVehiculo>> getAll() {
         List<TtVehiculo> response = this.service.findAll();
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @ApiOperation("Obtiene un vehículo por su ID")
+    @GetMapping("/get/{id}")
+    public ResponseEntity<TtVehiculo> getById(@PathVariable Integer id) {
+        Optional<TtVehiculo> vehiculo = this.service.findById(id);
+        return vehiculo.map(ResponseEntity::ok)
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @ApiOperation("Agrega un nuevo vehículo")

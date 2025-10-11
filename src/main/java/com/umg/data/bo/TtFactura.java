@@ -21,7 +21,12 @@ public class TtFactura {
     private LocalDate fechaFactura;
     private BigDecimal totalFactura;
     private String descripcionFactura;
-    private Integer ttOrdenTrabajoIdOrdenTrabajo;
+
+    // ✅ Relación con Orden de Trabajo
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tt_orden_trabajo_id_orden_trabajo", referencedColumnName = "idOrdenTrabajo")
+    private TtOrdenTrabajo ordenTrabajo;
+
     private String noFactura;
     private LocalDateTime fechaRegistro;
     private String estadoRegistro;

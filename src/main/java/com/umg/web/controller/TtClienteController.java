@@ -11,9 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/service/Autex_M1/ttCliente")
+@CrossOrigin(origins = "http://localhost:3000")
 @Api(value = "Manejo de clientes", protocols = "http")
 public class TtClienteController {
 
@@ -28,6 +30,14 @@ public class TtClienteController {
     ResponseEntity<List<TtCliente>> getAll() {
         List<TtCliente> response = this.service.findAll();
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @ApiOperation("Obtiene un cliente por su ID")
+    @GetMapping("/get/{id}")
+    public ResponseEntity<TtCliente> getById(@PathVariable Integer id) {
+        Optional<TtCliente> cliente = this.service.findById(id);
+        return cliente.map(ResponseEntity::ok)
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @ApiOperation("Agrega un nuevo cliente")

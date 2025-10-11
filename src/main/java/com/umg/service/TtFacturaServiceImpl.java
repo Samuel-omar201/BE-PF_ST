@@ -3,6 +3,7 @@ package com.umg.service;
 import com.umg.data.bo.TtFactura;
 import com.umg.data.repository.TtFacturaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +20,13 @@ public class TtFacturaServiceImpl implements TtFacturaService {
     @Override
     public List<TtFactura> findAll() {
         return repository.findAll();
+    }
+
+    // NUEVO: Implementación con relaciones cargadas
+    @Override
+    @Transactional(readOnly = true)
+    public List<TtFactura> findAllWithDetails() {
+        return repository.findAllWithDetails();
     }
 
     @Override

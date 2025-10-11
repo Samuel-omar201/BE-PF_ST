@@ -8,6 +8,10 @@ import java.util.Optional;
 public interface TtFacturaService {
 
     List<TtFactura> findAll();
+
+    //NUEVO: Método para obtener facturas con detalles
+    List<TtFactura> findAllWithDetails();
+
     Optional<TtFactura> findById(Integer id);
     TtFactura update(TtFactura ttFactura);
     TtFactura deleteById(Integer id);

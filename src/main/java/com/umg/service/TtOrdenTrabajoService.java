@@ -8,7 +8,13 @@ import java.util.Optional;
 public interface TtOrdenTrabajoService {
 
     List<TtOrdenTrabajo> findAll();
+
+    // ✅ NUEVO: Método para obtener órdenes con relaciones cargadas
+    List<TtOrdenTrabajo> findAllWithDetails();
+
     Optional<TtOrdenTrabajo> findById(Integer id);
+
     TtOrdenTrabajo update(TtOrdenTrabajo ttOrdenTrabajo);
+
     TtOrdenTrabajo deleteById(Integer id);
 }

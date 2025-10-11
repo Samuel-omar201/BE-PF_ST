@@ -4,6 +4,7 @@ import com.umg.data.bo.TtOrdenTrabajo;
 import com.umg.data.repository.TtOrdenTrabajoRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,13 @@ public class TtOrdenTrabajoServiceImpl implements TtOrdenTrabajoService {
     @Override
     public List<TtOrdenTrabajo> findAll() {
         return repository.findAll();
+    }
+
+    // ✅ NUEVO: Implementación del método con relaciones cargadas
+    @Override
+    @Transactional
+    public List<TtOrdenTrabajo> findAllWithDetails() {
+        return repository.findAllWithDetails();
     }
 
     @Override
