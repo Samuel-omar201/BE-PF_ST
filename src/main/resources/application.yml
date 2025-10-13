@@ -1,5 +1,6 @@
 server:
-  port: 8090
+  server:
+    port=${PORT:8090}:
 
 spring:
   application:
@@ -9,7 +10,6 @@ spring:
     url: jdbc:mysql://mainline.proxy.rlwy.net:39835/railway?useSSL=false&serverTimezone=UTC
     username: root
     password: pRiLclPwGNaQdwqCuAbnGlcWczXKsEDV
-
     jpa:
       hibernate:
         ddl-auto: update
