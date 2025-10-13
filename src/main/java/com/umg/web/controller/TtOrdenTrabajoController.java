@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/service/Autex_M1/ttOrdenTrabajo")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @Api(value = "Manejo de órdenes de trabajo", protocols = "http")
 public class TtOrdenTrabajoController {
 
@@ -27,6 +27,11 @@ public class TtOrdenTrabajoController {
 
     @Autowired
     private TtOrdenTrabajoService service;
+
+    @GetMapping("/test")
+    public String test() {
+        return "Backend funcionando correctamente";
+    }
 
     @ApiOperation("Obtiene todas las órdenes de trabajo")
     @GetMapping("/getAll")
