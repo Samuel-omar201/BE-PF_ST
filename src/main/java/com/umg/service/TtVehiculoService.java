@@ -10,5 +10,11 @@ public interface TtVehiculoService {
     List<TtVehiculo> findAll();
     Optional<TtVehiculo> findById(Integer id);
     TtVehiculo update(TtVehiculo ttVehiculo);
+
+    TtVehiculo save(TtVehiculo vehiculo);
     TtVehiculo deleteById(Integer id);
+
+    TtVehiculo deleteLogically(Integer id);
+
+    List<TtVehiculo> findAllWithCliente();
 }

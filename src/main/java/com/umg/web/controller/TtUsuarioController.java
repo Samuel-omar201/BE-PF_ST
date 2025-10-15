@@ -1,6 +1,7 @@
 package com.umg.web.controller;
 
 import com.umg.data.bo.TtUsuario;
+import com.umg.dto.CrearUsuarioDTO;
 import com.umg.service.TtUsuarioService;
 import com.umg.data.repository.TtUsuarioRepository;
 import io.swagger.annotations.Api;
@@ -10,10 +11,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/service/Autex_M1/ttUsuario")
+@CrossOrigin(origins = "*")
 @Api(value = "Manejo de usuarios", protocols = "http")
 public class TtUsuarioController {
 
@@ -50,4 +54,37 @@ public class TtUsuarioController {
         this.service.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @ApiOperation("Crea un nuevo usuario (Cliente o Técnico)")
+    @PostMapping("/crearUsuario")
+    public ResponseEntity<Map<String, Object>> crearUsuario(@RequestBody CrearUsuarioDTO dto) {
+        try {
+            TtUsuario usuario = service.crearUsuario(dto);
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", true);
+            response.put("message", "Usuario creado exitosamente");
+            response.put("idUsuario", usuario.getIdUsuario());
+            response.put("nombreUsuario", usuario.getNombreUsuario());
+
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
+
+        } catch (RuntimeException e) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", false);
+            response.put("message", e.getMessage());
+
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", false);
+            response.put("message", "Error interno del servidor");
+
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
 }

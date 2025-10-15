@@ -16,7 +16,15 @@ public class TtVehiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idVehiculo;
 
+    // ✅ Campo para recibir/enviar el ID del cliente (compatibilidad con frontend)
+    @Column(name = "tt_cliente_id_cliente", insertable = false, updatable = false)
     private Integer ttClienteIdCliente;
+
+    // ✅ Relación con Cliente (solo para consultas)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tt_cliente_id_cliente", referencedColumnName = "idCliente")
+    private TtCliente cliente;
+
     private String placa;
     private String marca;
     private String modelo;
@@ -24,5 +32,15 @@ public class TtVehiculo {
     private String anioModelo;
     private String descripcion;
     private LocalDateTime fechaRegistro;
-    private String estadoRegistro;
+    private String estadoRegistro; // '0' = inactivo, '1' = activo
+
+    @PrePersist
+    protected void onCreate() {
+        if (fechaRegistro == null) {
+            fechaRegistro = LocalDateTime.now();
+        }
+        if (estadoRegistro == null) {
+            estadoRegistro = "1";
+        }
+    }
 }
