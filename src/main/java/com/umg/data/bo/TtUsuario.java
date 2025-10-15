@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tt_usuario")
@@ -16,22 +17,32 @@ public class TtUsuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
 
-    // ✅ Relación opcional con Cliente (puede ser NULL si es técnico)
+    // Campos Integer para compatibilidad
+    @Column(name = "tt_cliente_id_cliente", insertable = false, updatable = false)
+    private Integer ttClienteIdCliente;
+
+    @Column(name = "tt_tecnico_id_tecnico", insertable = false, updatable = false)
+    private Integer ttTecnicoIdTecnico;
+
+    // Relaciones
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tt_cliente_id_cliente", referencedColumnName = "idCliente", nullable = true)
+    @JoinColumn(name = "tt_cliente_id_cliente", nullable = true)
     private TtCliente cliente;
 
-    // ✅ Relación opcional con Técnico (puede ser NULL si es cliente)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tt_tecnico_id_tecnico", referencedColumnName = "idTecnico", nullable = true)
+    @JoinColumn(name = "tt_tecnico_id_tecnico", nullable = true)
     private TtTecnico tecnico;
+
+    // Relación con roles (un usuario puede tener múltiples roles)
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<TtAsignaRolUsuario> roles;
 
     private String nombreUsuario;
     private String correoPrincipal;
     private String correoSecundario;
     private String contraseña;
     private LocalDateTime fechaRegistro;
-    private String estadoRegistro; // ENUM('0','1')
+    private String estadoRegistro;
 
     @PrePersist
     protected void onCreate() {
