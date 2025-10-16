@@ -15,4 +15,6 @@ public class UsuarioInfoDTO {
     private String nombreCompleto;
     private List<RolDTO> roles;
     private String rolPrincipal; // El rol con más permisos
+    private Integer idCliente;
+    private Integer idTecnico;
 }

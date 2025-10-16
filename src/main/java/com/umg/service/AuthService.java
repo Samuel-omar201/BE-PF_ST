@@ -87,11 +87,13 @@ public class AuthService {
             // Determinar tipo de usuario y nombre completo
             if (usuario.getCliente() != null) {
                 usuarioInfo.setTipoUsuario("cliente");
+                usuarioInfo.setIdCliente(usuario.getCliente().getIdCliente());
                 String nombreCompleto = usuario.getCliente().getPrimerNombre() + " " +
                         usuario.getCliente().getPrimerApellido();
                 usuarioInfo.setNombreCompleto(nombreCompleto.trim());
             } else if (usuario.getTecnico() != null) {
                 usuarioInfo.setTipoUsuario("tecnico");
+                usuarioInfo.setIdTecnico(usuario.getTecnico().getIdTecnico());
                 String nombreCompleto = usuario.getTecnico().getPrimerNombre() + " " +
                         usuario.getTecnico().getPrimerApellido();
                 usuarioInfo.setNombreCompleto(nombreCompleto.trim());
