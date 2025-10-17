@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/service/Autex_M1/estado-seguimiento")
+@CrossOrigin(origins = "*")
 @Api(value = "Manejo de estados de seguimiento de trabajo", protocols = "http")
 public class TcEstadoSeguimientoTrabajoController {
 

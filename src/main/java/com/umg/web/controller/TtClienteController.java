@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/service/Autex_M1/ttCliente")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @Api(value = "Manejo de clientes", protocols = "http")
 public class TtClienteController {
 

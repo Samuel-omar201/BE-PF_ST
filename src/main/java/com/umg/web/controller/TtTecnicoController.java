@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/service/Autex_M1/ttTecnico")
+@CrossOrigin(origins = "*")
 @Api(value = "Manejo de técnicos", protocols = "http")
 public class TtTecnicoController {
 

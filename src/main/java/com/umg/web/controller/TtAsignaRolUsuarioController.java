@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/service/Autex_M1/ttAsignaRolUsuario")
+@CrossOrigin(origins = "*")
 @Api(value = "Manejo de asignación de roles a usuarios", protocols = "http")
 public class TtAsignaRolUsuarioController {
 

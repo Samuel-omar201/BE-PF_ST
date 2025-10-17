@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/service/Autex_M1/logs")
+@CrossOrigin(origins = "*")
 @Api(value = "Manejo de logs", protocols = "http")
 public class TtLogsController {
 

@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/service/Autex_M1/ttSeguimientoTrabajo")
+@CrossOrigin(origins = "*")
 @Api(value = "Manejo de seguimientos de trabajos", protocols = "http")
 public class TtSeguimientoTrabajoController {
 

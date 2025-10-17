@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/service/Autex_M1/ttFactura")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @Api(value = "Manejo de facturas", protocols = "http")
 public class TtFacturaController {
 

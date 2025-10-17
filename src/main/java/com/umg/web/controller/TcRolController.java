@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/service/Autex_M1/rol")
+@CrossOrigin(origins = "*")
 @Api(value = "Manejo de roles", protocols = "http")
 public class TcRolController {
 
