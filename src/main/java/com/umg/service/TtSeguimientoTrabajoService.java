@@ -11,4 +11,8 @@ public interface TtSeguimientoTrabajoService {
     Optional<TtSeguimientoTrabajo> findById(Integer id);
     TtSeguimientoTrabajo update(TtSeguimientoTrabajo ttSeguimientoTrabajo);
     TtSeguimientoTrabajo deleteById(Integer id);
+
+    List<TtSeguimientoTrabajo> findByOrdenTrabajo(Integer idOrden);
+
+    TtSeguimientoTrabajo save(TtSeguimientoTrabajo seguimiento);
 }
