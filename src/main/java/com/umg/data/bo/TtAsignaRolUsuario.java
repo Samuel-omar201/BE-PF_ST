@@ -1,4 +1,3 @@
-// ========== TtAsignaRolUsuario.java ==========
 package com.umg.data.bo;
 
 import lombok.Getter;
@@ -15,27 +14,27 @@ public class TtAsignaRolUsuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_asigna_rol_usuario")
     private Integer idAsignaRolUsuario;
 
-    // Campo Integer para compatibilidad
     @Column(name = "tt_usuario_id_usuario", insertable = false, updatable = false)
     private Integer ttUsuarioIdUsuario;
 
-    // Relación con Usuario
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tt_usuario_id_usuario", referencedColumnName = "idUsuario")
+    @JoinColumn(name = "tt_usuario_id_usuario", referencedColumnName = "id_usuario")
     private TtUsuario usuario;
 
-    // Campo Integer para compatibilidad
     @Column(name = "tc_rol_id_rol", insertable = false, updatable = false)
     private Integer tcRolIdRol;
 
-    // Relación con Rol
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tc_rol_id_rol", referencedColumnName = "idRol")
+    @JoinColumn(name = "tc_rol_id_rol", referencedColumnName = "id_rol")
     private TcRol rol;
 
+    @Column(name = "fecha_registro")
     private LocalDateTime fechaRegistro;
+
+    @Column(name = "estado_registro")
     private String estadoRegistro;
 
     @PrePersist

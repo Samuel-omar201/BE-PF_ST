@@ -14,10 +14,18 @@ public class TcEstadoSeguimientoTrabajo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_estado_seguimiento_trabajo")
     private Integer idEstadoSeguimientoTrabajo;
 
+    @Column(name = "nombre_estado_seguimiento")
     private String nombreEstadoSeguimiento;
+
+    @Column(name = "descripcion_estado_seguimiento")
     private String descripcionEstadoSeguimiento;
+
+    @Column(name = "fecha_registro")
     private LocalDateTime fechaRegistro;
+
+    @Column(name = "estado_registro")
     private String estadoRegistro;
 }

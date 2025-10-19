@@ -3,9 +3,11 @@ package com.umg.data.repository;
 import com.umg.data.bo.TtVehiculo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface TtVehiculoRepository extends JpaRepository<TtVehiculo, Integer> {
 
     // ✅ Obtener todos los vehículos con información del cliente

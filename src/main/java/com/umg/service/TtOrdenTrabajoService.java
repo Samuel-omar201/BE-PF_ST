@@ -16,5 +16,7 @@ public interface TtOrdenTrabajoService {
 
     TtOrdenTrabajo update(TtOrdenTrabajo ttOrdenTrabajo);
 
-    TtOrdenTrabajo deleteById(Integer id);
+    void deleteById(Integer id);
+
+    TtOrdenTrabajo save(TtOrdenTrabajo orden);
 }

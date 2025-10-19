@@ -15,6 +15,7 @@ public class TtUsuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
     private Integer idUsuario;
 
     // Campos Integer para compatibilidad

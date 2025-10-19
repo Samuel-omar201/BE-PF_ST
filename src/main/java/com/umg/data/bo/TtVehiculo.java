@@ -14,25 +14,31 @@ public class TtVehiculo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_vehiculo")  // ✅ Especificar nombre de columna
     private Integer idVehiculo;
 
-    // ✅ Campo para recibir/enviar el ID del cliente (compatibilidad con frontend)
     @Column(name = "tt_cliente_id_cliente", insertable = false, updatable = false)
     private Integer ttClienteIdCliente;
 
-    // ✅ Relación con Cliente (solo para consultas)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tt_cliente_id_cliente", referencedColumnName = "idCliente")
+    @JoinColumn(name = "tt_cliente_id_cliente", referencedColumnName = "id_cliente")  // ✅ Usar nombre de columna de BD
     private TtCliente cliente;
 
     private String placa;
     private String marca;
     private String modelo;
     private String color;
+
+    @Column(name = "anio_modelo")
     private String anioModelo;
+
     private String descripcion;
+
+    @Column(name = "fecha_registro")
     private LocalDateTime fechaRegistro;
-    private String estadoRegistro; // '0' = inactivo, '1' = activo
+
+    @Column(name = "estado_registro")
+    private String estadoRegistro;
 
     @PrePersist
     protected void onCreate() {

@@ -14,10 +14,18 @@ public class TcRol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_rol")
     private Integer idRol;
 
+    @Column(name = "nombre_rol")
     private String nombreRol;
+
+    @Column(name = "descripcion_rol")
     private String descripcionRol;
+
+    @Column(name = "fecha_registro")
     private LocalDateTime fechaRegistro;
+
+    @Column(name = "estado_registro")
     private String estadoRegistro;
 }
