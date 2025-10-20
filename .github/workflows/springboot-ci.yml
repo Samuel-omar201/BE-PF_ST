@@ -41,21 +41,3 @@ jobs:
         with:
           name: springboot-jar
           path: target/*.jar
-
-  deploy:
-    name: Deploy to Railway
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: springboot-jar
-          path: target/
-
-      - name: Deploy using Railway CLI
-        uses: railwayapp/railway-deploy-action@v2
-        with:
-          service: backend
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
